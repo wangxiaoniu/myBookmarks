@@ -64,7 +64,7 @@
                     //把用户输入网址 赋值到对应hash中
                     hash[key]=buttonUrl
                     
-                    //把新的hash存入浏览器中
+                    //只要hash变了  就存到newsite桶中 ,利用浏览器存储
                     localStorage.setItem('newsite',JSON.stringify(hash))
                 }
 
