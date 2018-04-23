@@ -30,10 +30,12 @@
         hashInLocalStorage = JSON.parse(localStorage.getItem('newsite') || 'null')
 
         if(hashInLocalStorage){
+            //新hash覆盖旧hash
             hash = hashInLocalStorage
         }
-        //循环加入div到其父元素中
+        
         index=0
+        //循环加入div到其父元素中
         while(index<keys['length']){
             div=document.createElement('div')
             mainxxx.appendChild(div)
@@ -42,16 +44,25 @@
             row = keys[index]  
 
             index2=0
+            //循环加入kbd到其父元素div中 并输入26个字母
             while(index2<row['length']){
+                //createElement()创建新标签方法
                 kbd=document.createElement('kbd')
+                //输入26个字母 textContent设置节点文本内容
                 kbd.textContent=row[index2]
                 button=document.createElement('button')
                 button.textContent='编辑'
                 button.id=row[index2]
+                //点击编辑按钮时触发
                 button.onclick=function(x){
-                    key=x.target.id//用户点击对应的button
+                    //用户点击对应的button
+                    key=x.target.id
+                    
+                    //prompt显示可提示用户进行输入的对话框
                     buttonUrl=prompt('输入你的网址')
-                    hash[key]=buttonUrl//把用户输入网址 赋值到对应hash中
+
+                    //把用户输入网址 赋值到对应hash中
+                    hash[key]=buttonUrl
                     
                     //把新的hash存入浏览器中
                     localStorage.setItem('newsite',JSON.stringify(hash))
