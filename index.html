@@ -52,13 +52,14 @@
                     key=x.target.id//用户点击对应的button
                     buttonUrl=prompt('输入你的网址')
                     hash[key]=buttonUrl//把用户输入网址 赋值到对应hash中
+                    
+                    //把新的hash存入浏览器中
                     localStorage.setItem('newsite',JSON.stringify(hash))
-
-                    console.log(hash)
                 }
 
-
+                //在kbd标签内加入 button标签 appendChild()方法
                 kbd.appendChild(button)
+                //在div标签内加入 kbd标签
                 div.appendChild(kbd)
                
                 index2=index2+1
@@ -67,10 +68,13 @@
             index=index+1
         }
 
+        //页面document 在键盘输入动作发生时触发onkeypress=funcon(){}
         document.onkeypress=function(e){
+            //获取键入的字母（key）
             key=e['key']//q w e
+            //获取键入字母在hash数组中所设置的对应的网址，并存放进容器website
             website=hash[key]  //qq.com
-
+            //新窗口打开页面 window.open()打开页面
             window.open('http://'+website,'_blank')
         }
 
